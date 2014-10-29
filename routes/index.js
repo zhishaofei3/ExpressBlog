@@ -141,7 +141,7 @@ module.exports = function (app) {
 				fs.unlinkSync(req.files[i].path);
 				console.log("Successfully removed an empty file!");
 			} else {
-				var target_path = "./public/images" + req.files[i].name;
+				var target_path = "./public/images/" + req.files[i].originalname;
 				fs.renameSync(req.files[i].path, target_path);
 				console.log("Successfully renamed a file!");
 			}

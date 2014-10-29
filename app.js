@@ -1,10 +1,10 @@
 var express = require('express');
 var path = require('path');
 var session = require('express-session');
+var multer = require('multer');
 var MongoStore = require('connect-mongo')(session);
 var settings = require('./settings');
 var flash = require("connect-flash");
-var form = require('connect-form');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -21,9 +21,10 @@ app.use(flash());
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
-app.use(form({keepExtensions: true, uploadDir: "./public/images"}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+//app.use(express.bodyParser({uploadDir:'./public/images'}));
+app.use(multer({keepExtensions:true, dest: "./public/images"}));
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(session({secret: 'keyboard cat'}))
 app.use(session({
