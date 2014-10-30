@@ -24,7 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 //app.use(express.bodyParser({uploadDir:'./public/images'}));
-app.use(multer({keepExtensions:true, dest: "./public/images"}));
+app.use(multer({keepExtensions: true, dest: "./public/images"}));
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(session({secret: 'keyboard cat'}))
 app.use(session({
